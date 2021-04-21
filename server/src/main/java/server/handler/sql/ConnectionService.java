@@ -7,20 +7,6 @@ import java.sql.SQLException;
 public final class ConnectionService {
     private ConnectionService() { }
 
-    public static Connection connectSQLite() {
-        try {
-            return DriverManager.getConnection("jdbc:sqlite:server/database.db");
-        } catch (SQLException throwables) {
-            throw new RuntimeException("SWW", throwables);
-        }
-    }
-    public static Connection connectPostGreSQL() {
-        try {
-            return DriverManager.getConnection("jdbc:postgresql:server/database.db");
-        } catch (SQLException throwables) {
-            throw new RuntimeException("SWW", throwables);
-        }
-    }
     public static Connection connectMySQL() {
         try {
             return DriverManager.getConnection("jdbc:mysql://127.0.0.1:3306/client", "root", "Njgjhbr212");

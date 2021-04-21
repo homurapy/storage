@@ -10,7 +10,7 @@ public class Config {
     private String host;
     private String serverRepo;
     private String clientRepo;
-    public static final String DEFAULT_CONFIG = "common.Config.txt";
+    public static final String DEFAULT_CONFIG = "config.txt";
 
     public Config() { }
     public int getPort() {

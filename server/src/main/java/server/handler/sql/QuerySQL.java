@@ -12,6 +12,7 @@ public class QuerySQL {
             PreparedStatement state = conn.prepareStatement("SELECT name FROM clientside WHERE name = ? AND pass = ?");
             state.setString(1, login);
             state.setString(2, pass);
+            System.out.println(login);
             ResultSet rs = state.executeQuery();
             if (rs.next()) {
                 return true;

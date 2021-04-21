@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/common/src/test/java/common/ConfigTest.java" charset="windows-1251" />
+    <file url="file://$PROJECT_DIR$/checkstyle.xml" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/common/src/test/java/common/ConfigTest.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/common/src/test/resources/config2.txt" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/common/src/test/resources/config3.txt" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/server/src/main/resources/databaseClient.mwb" charset="windows-1251" />
-    <file url="file://$PROJECT_DIR$/server/src/test/java/server/handler/CommandServerTest.java" charset="windows-1251" />
     <file url="file://$PROJECT_DIR$/server/src/test/java/server/handler/CommandServerTest.java" charset="windows-1251" />
   </component>
 </project>

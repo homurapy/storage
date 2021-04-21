@@ -27,7 +27,7 @@ public class Server {
     }
 
     public void run() throws Exception {
-        System.out.println("server.Server was started ...");
+        System.out.println("Server was started ...");
         EventLoopGroup bossGroup = new NioEventLoopGroup(); // (1)
         EventLoopGroup workerGroup = new NioEventLoopGroup();
         try {

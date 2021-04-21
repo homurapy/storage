@@ -8,12 +8,11 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.concurrent.Future;
 
-
 import java.nio.file.Files;
 import java.nio.file.Path;
 
 public class MainHandler extends ChannelInboundHandlerAdapter { // (1)
-private final int maxLengthArrayRename = 3;
+
 private final Config config;
 
     public MainHandler(Config config) {
@@ -40,23 +39,17 @@ private final Config config;
                     Path senderFileAddress = Path.of(address + "\\" + strings[1]);
                     if (Files.exists(senderFileAddress)) {
                         Future f = ctx.writeAndFlush(cmd.sendFile(strings[1], senderFileAddress));
-                    if (f.isDone()) {
-                        s = "The requested file was transferred";
-                    }
+                        if (f.isDone()) {
+                            ctx.writeAndFlush(new MyMessage("The requested file was transferred"));
+                        }
                     } else {
-                        s = "The specified file does not exist";
-                    }
-                    } else if (strings[0].equals("/rename")) {
-                    if (strings.length == maxLengthArrayRename) {
-                        ctx.writeAndFlush(new MyMessage(cmd.renameFile(strings[1], strings[2], address)));
-                    } else {
-                        s = inCorrectRequest;
+                        ctx.writeAndFlush(new MyMessage("The specified file does not exist"));
                     }
                  } else if (strings[0].equals("/delete")) {
                     if (strings.length == 2) {
                         ctx.writeAndFlush(new MyMessage(cmd.deleteFile(strings[1], address)));
                     } else {
-                        s = inCorrectRequest;
+                        ctx.writeAndFlush(new MyMessage(inCorrectRequest));
                     }
                 } else {
                     ctx.writeAndFlush(new MyMessage("Wrong command"));
@@ -66,7 +59,7 @@ private final Config config;
         ctx.writeAndFlush(new MyMessage("Your file was successfully save"));
         (new Common()).receiveFile(msg, address);
         } else {
-            System.out.printf("server.Server received wrong object!");
+            System.out.printf("Server received wrong object!");
         }
     }
     @Override

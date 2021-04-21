@@ -48,12 +48,12 @@ public class CLI {
                     do {
                         s = scanner.nextLine();
                         String[] strings = s.split(" ");
-                        if (s.equals("/upload") && strings.length == 2) {
+                        if (strings[0].equals("/upload") && strings.length == 2) {
                             Path senderFileAddress = Path.of(repo + "\\" + strings[1]);
                             if (Files.exists(senderFileAddress)) {
                             out.writeObject(common.sendFile(strings[1], senderFileAddress));
-                            }
-                                System.out.println("The specified file does not exist");
+                            } else {
+                                System.out.println("The specified file does not exist");}
                         } else if (strings[0].equals("/delete") && s.endsWith("-l")) {
                             System.out.println((new Common()).deleteFile(strings[1], repo));
                         } else if (strings[0].equals("/rename") && s.endsWith("-l")) {
